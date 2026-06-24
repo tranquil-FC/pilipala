@@ -80,7 +80,7 @@ class ReplyItemModel {
     rpidStr = json['rpid_str'];
     rootStr = json['root_str'];
     parentStr = json['parent_str'];
-    like = json['like'];
+    like = json['like'] == 1;
     action = json['action'];
     member = ReplyMember.fromJson(json['member']);
     content = ReplyContent.fromJson(json['content']);
@@ -91,7 +91,7 @@ class ReplyItemModel {
         : [];
     assist = json['assist'];
     upAction = UpAction.fromJson(json['up_action']);
-    invisible = json['invisible'];
+    invisible = json['invisible'] == 1;
     replyControl = json['reply_control'] == null
         ? null
         : ReplyControl.fromJson(json['reply_control']);
@@ -110,8 +110,8 @@ class UpAction {
   bool? reply;
 
   UpAction.fromJson(Map<String, dynamic> json) {
-    like = json['like'];
-    reply = json['reply'];
+    like = json['like'] == 1;
+    reply = json['reply'] == 1;
   }
 }
 
@@ -137,9 +137,9 @@ class ReplyControl {
   String? location;
 
   ReplyControl.fromJson(Map<String, dynamic> json) {
-    upReply = json['up_reply'] ?? false;
-    isUpTop = json['is_up_top'] ?? false;
-    upLike = json['up_like'] ?? false;
+    upReply = json['up_reply'] == 1;
+    isUpTop = json['is_up_top'] == 1;
+    upLike = json['up_like'] == 1;
     if (json['sub_reply_entry_text'] != null) {
       final RegExp regex = RegExp(r"\d+");
       final RegExpMatch match = regex.firstMatch(

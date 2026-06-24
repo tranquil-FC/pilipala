@@ -11,7 +11,7 @@ class DynamicsDataModel {
   String? offset;
 
   DynamicsDataModel.fromJson(Map<String, dynamic> json) {
-    hasMore = json['has_more'];
+    hasMore = json['has_more'] == 1;
     items = json['items']
         .map<DynamicItemModel>((e) => DynamicItemModel.fromJson(e))
         .toList();
@@ -43,7 +43,7 @@ class DynamicItemModel {
     modules = ItemModulesModel.fromJson(json['modules']);
     orig = json['orig'] != null ? ItemOrigModel.fromJson(json['orig']) : null;
     type = json['type'];
-    visible = json['visible'];
+    visible = json['visible'] == 1;
   }
 }
 
@@ -67,7 +67,7 @@ class ItemOrigModel {
     isStr = json['is_str'];
     modules = ItemModulesModel.fromJson(json['modules']);
     type = json['type'];
-    visible = json['visible'];
+    visible = json['visible'] == 1;
   }
 }
 
@@ -137,7 +137,7 @@ class ModuleAuthorModel {
 
   ModuleAuthorModel.fromJson(Map<String, dynamic> json) {
     face = json['face'];
-    following = json['following'];
+    following = json['following'] == 1;
     jumpUrl = json['jump_url'];
     label = json['label'];
     mid = json['mid'];
@@ -286,7 +286,7 @@ class Ugc {
     headText = json['head_text'];
     idStr = json['id_str'];
     jumpUrl = json['jump_url'];
-    multiLine = json['multi_line'];
+    multiLine = json['multi_line'] == 1;
     title = json['title'];
   }
 }
@@ -796,7 +796,7 @@ class Comment {
 
   Comment.fromJson(Map<String, dynamic> json) {
     count = json['count'] == 0 ? null : json['count'].toString();
-    forbidden = json['forbidden'];
+    forbidden = json['forbidden'] == 1;
   }
 }
 
@@ -807,7 +807,7 @@ class ForWard {
 
   ForWard.fromJson(Map<String, dynamic> json) {
     count = json['count'] == 0 ? null : json['count'].toString();
-    forbidden = json['forbidden'];
+    forbidden = json['forbidden'] == 1;
   }
 }
 
@@ -825,8 +825,8 @@ class Like {
 
   Like.fromJson(Map<String, dynamic> json) {
     count = json['count'] == 0 ? null : json['count'].toString();
-    forbidden = json['forbidden'];
-    status = json['status'];
+    forbidden = json['forbidden'] == 1;
+    status = json['status'] == 1;
   }
 }
 

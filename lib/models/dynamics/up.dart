@@ -70,7 +70,7 @@ class LiveUserItem {
 
   LiveUserItem.fromJson(Map<String, dynamic> json) {
     face = json['face'];
-    isReserveRecall = json['is_reserve_recall'];
+    isReserveRecall = json['is_reserve_recall'] == 1;
     jumpUrl = json['jump_url'];
     mid = json['mid'];
     roomId = json['room_id'];
@@ -97,8 +97,8 @@ class UpItem {
 
   UpItem.fromJson(Map<String, dynamic> json) {
     face = json['face'];
-    hasUpdate = json['has_update'];
-    isReserveRecall = json['is_reserve_recall'];
+    hasUpdate = json['has_update'] == 1;
+    isReserveRecall = json['is_reserve_recall'] == 1;
     mid = json['mid'];
     uname = json['uname'];
   }

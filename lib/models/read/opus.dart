@@ -470,8 +470,8 @@ class StatItem {
 
   StatItem.fromJson(Map<String, dynamic> json) {
     count = json['count'];
-    forbidden = json['forbidden'];
-    status = json['status'];
+    forbidden = json['forbidden'] == 1;
+    status = json['status'] == 1;
   }
 }
 

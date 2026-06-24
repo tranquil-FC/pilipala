@@ -32,7 +32,7 @@ class MemberInfoModel {
     face = json['face'];
     sign = json['sign'] == '' ? '该用户还没有签名' : json['sign'].replaceAll('\n', '');
     level = json['level'];
-    isFollowed = json['is_followed'];
+    isFollowed = json['is_followed'] == 1;
     topPhoto = json['top_photo'];
     official = json['official'];
     vip = Vip.fromJson(json['vip']);
