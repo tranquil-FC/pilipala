@@ -75,6 +75,9 @@ class ApiInterceptor extends Interceptor {
       case DioExceptionType.unknown:
         final String res = await checkConnect();
         return '$res，网络异常！';
+      default:
+        errText = "未知网络错误";
+        break;
     }
   }
 
