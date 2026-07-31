@@ -19,22 +19,22 @@ jobs:
           distribution: "zulu"
           java-version: "17"
 
-      - name: 检查缓存
-        uses: actions/cache@v4
-        id: cache-flutter
-        with:
-          path: /root/flutter-sdk
-          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
+      - name: 强制锁定旧版插件依赖
+        run: |
+          echo "" >> pubspec.yaml
+          echo "dependency_overrides:" >> pubspec.yaml
+          echo "  dynamic_color: 1.6.8" >> pubspec.yaml
+          echo "  font_awesome_flutter: 10.7.0" >> pubspec.yaml
 
       - name: 安装Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.27.0'
+          flutter-version: '3.19.6'
 
       - name: 下载项目依赖
         run: flutter pub get
 
-      - name: 自动修复 Android 编译版本限制 (镇压隐藏地雷)
+      - name: 自动修复 Android 编译版本限制
         run: |
           sed -i 's/compileSdkVersion .*/compileSdkVersion 36/g' android/app/build.gradle
           sed -i 's/compileSdk .*/compileSdk 36/g' android/app/build.gradle
