@@ -27,13 +27,17 @@ jobs:
           key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
 
       - name: 安装Flutter
-        if: steps.cache-flutter.outputs.cache-hit != 'true'
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: '3.27.0'
 
       - name: 下载项目依赖
         run: flutter pub get
+
+      - name: 自动修复 Android 编译版本限制 (镇压隐藏地雷)
+        run: |
+          sed -i 's/compileSdkVersion .*/compileSdkVersion 36/g' android/app/build.gradle
+          sed -i 's/compileSdk .*/compileSdk 36/g' android/app/build.gradle
 
       - name: 编译 Debug 版 APK (无须签名)
         run: flutter build apk --debug
