@@ -76,8 +76,7 @@ class ApiInterceptor extends Interceptor {
         final String res = await checkConnect();
         return '$res，网络异常！';
       default:
-        errText = "未知网络错误";
-        break;
+        return '未知网络错误';
     }
   }
 
