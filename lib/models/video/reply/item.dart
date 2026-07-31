@@ -80,7 +80,7 @@ class ReplyItemModel {
     rpidStr = json['rpid_str'];
     rootStr = json['root_str'];
     parentStr = json['parent_str'];
-    like = json['like'] == 1;
+    like = json['like'] == 1 ? 1 : 0;
     action = json['action'];
     member = ReplyMember.fromJson(json['member']);
     content = ReplyContent.fromJson(json['content']);
