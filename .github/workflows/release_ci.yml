@@ -20,7 +20,8 @@ jobs:
           java-version: "17"
 
       - name: 强制锁定旧版插件依赖
-        run: sed -i 's/^dependency_overrides:/dependency_overrides:\n  dynamic_color: 1.6.8\n  font_awesome_flutter: 10.7.0/g' pubspec.yaml
+        run: |
+          sed -i 's/^dependency_overrides:/dependency_overrides:\n  dynamic_color: 1.6.8\n  font_awesome_flutter: 10.7.0/g' pubspec.yaml
 
       - name: 安装Flutter
         uses: subosito/flutter-action@v2
